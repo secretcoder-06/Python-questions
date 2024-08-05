@@ -1,0 +1,14 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+         ss = set()
+         def gen(s,o,e):
+            if len(s)==2*n:
+                ss.add(s)
+                return
+            if o<=n-1:
+                gen(s+'(',o+1,e)
+            if e<o:
+                gen(s+')',o,e+1)
+        
+         gen('(',1,0)
+         return ss

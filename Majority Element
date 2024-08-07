@@ -1,0 +1,16 @@
+class Solution:
+    def majorityElement(self, A, N):
+        #Your code here
+        threshold = N/2
+        num_counts = {}
+        
+        for i in range(len(A)):
+            if A[i] in num_counts.keys():
+                num_counts[A[i]] += 1
+            else:
+                num_counts[A[i]] = 1
+        
+        for k, v in num_counts.items():
+            if v > threshold:
+                return k
+        return -1

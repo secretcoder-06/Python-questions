@@ -1,0 +1,38 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class Solution:
+    #Function to add two numbers represented by linked list.
+    def addTwoLists(self, num1, num2):
+        
+        curr1 , curr2 = num1 , num2 
+        
+        res1 , res2 = "" , ""
+        while curr1:
+            res1+=str(curr1.data)
+            curr1 = curr1.next 
+        while curr2:
+            res2+=str(curr2.data)
+            curr2 = curr2.next 
+        
+        
+        res1 , res2  = res1 , res2
+        
+        res1 , res2 = int(res1) , int(res2)
+        
+        res = res1 + res2
+        
+        res = str(res)[::-1]
+        
+        
+        head = None
+        
+        for i in res:
+            new_node = Node(i)
+            new_node.next = head
+            head = new_node
+            
+        return head

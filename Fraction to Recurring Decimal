@@ -1,0 +1,14 @@
+class Solution:
+    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        sign='-' if numerator/denominator<0 else ''
+        n, d, s, ans = abs(numerator), abs(denominator), {}, str(abs(numerator)//abs(denominator))
+        n=n%d
+        if n==0: return sign+ans
+        ans, frac, fraccount = ans+'.', '', 0
+        while n not in s and n!=0:
+            s[n], n = fraccount, n*10
+            frac+=str(n//d)
+            n=n%d
+            fraccount+=1
+        if n==0: return sign+ans+frac
+        else: return sign+ans+frac[:s[n]]+'('+frac[s[n]:]+')'
